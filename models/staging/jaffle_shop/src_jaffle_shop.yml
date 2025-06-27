@@ -1,0 +1,43 @@
+version: 2
+
+sources:
+  - name: jaffle_shop_sources
+    database: dbt-tutorial
+    schema: jaffle_shop
+    tables:
+      - name: customers
+        description: "raw table for customers"
+        columns: 
+        - name: id 
+          description: "customer id"
+          tests:
+            - unique
+            - not_null
+        
+        - name: first_name
+          description: "customer first name"
+        
+        - name: last_name
+          description: "customer last name"
+
+      - name: orders
+        description: "raw table for orders"
+        columns:
+          - name: id
+            description: "order id"
+
+          - name: user_id
+            description: "user id"
+            tests:
+              - unique:
+                  config:
+                    severity: warn
+
+          - name: order_date
+            description: "order date"
+
+          - name: status
+            description: "order status"
+          
+          - name: _etl_leaded_at
+            description: "load date"
