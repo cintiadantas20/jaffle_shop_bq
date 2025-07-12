@@ -1,3 +1,11 @@
+{{ 
+    config(
+        materialized='incremental'
+        , unique_key = 'order_id'
+        , incremental_strategy = 'merge'
+    )
+}}
+
 with
     orders as (
         select 
@@ -26,5 +34,10 @@ with
             orders.order_id = payments.order_id
     )
 
-select *
+select max(order_date), min(order_date)
 from final
+
+{% if is_incremental() %}
+    where
+        order_date >= (select max(order_date) from {{this}})
+{% endif %}

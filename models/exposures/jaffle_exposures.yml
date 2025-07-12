@@ -1,0 +1,26 @@
+version: 2
+
+exposures:
+  - name: orders_data
+    label: orders_data
+    type: notebook # pode ser também dashboard, ML, application e analysis
+    maturity: high
+    url: https://tinyurl.com/jaffle-shop-reporting
+    description: 'Exposure orders data'
+    depends_on:
+      - ref('fct_orders')
+    owner:
+      name: Michael McData
+      email: data@jaffleshop.com
+    
+  - name: customers_data
+    label: customers_data
+    type: dashboard
+    maturity: high
+    url: https://tinyurl.com/jaffle-shop-reporting
+    description: 'Exposure customers data'
+    depends_on:
+      - ref('dim_customers')
+    owner:
+      name: Michael McData
+      email: data@jaffleshop.com
