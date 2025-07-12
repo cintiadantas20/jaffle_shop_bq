@@ -1,0 +1,6 @@
+payment_id,order_id,payment_method,payment_status,payment_amount,created_at,loaded_at
+121,100,bank_transfer,success,1000,2025-02-14,2025-07-10
+122,101,credit_card,fail,400,2025-02-14,2025-07-10
+123,102,credit_card,success,1900,2025-02-14,2025-07-10
+124,103,credit_card,success,1000,2025-02-15,2025-07-10
+125,104,coupon,success,100,2025-02-15,2025-07-10
